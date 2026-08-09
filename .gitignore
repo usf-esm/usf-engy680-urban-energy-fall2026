@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# User-added
+.DS_Store
+inputdata/*
+outputdata/*
+*/inputdata/*
+*/outputdata/*
