@@ -13,3 +13,5 @@ Shared code for Urban Energy and Climate course materials.
 Navigate to repo home directory (i.e. `[YOUR_LOCAL_PATH]/usf-engy680-urban-energy-fall2026/`) and run in terminal:
 
 `conda env create -f environment.yml`.
+
+- On a PC you can run a terminal inside the Anaconda application.
