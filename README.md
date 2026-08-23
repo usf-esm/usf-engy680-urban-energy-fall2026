@@ -3,7 +3,7 @@ Shared code for Urban Energy and Climate course materials.
 
 ## Setup
 
-We will work through these steps together in class, so just use this README as a reference.
+We will work through these steps together in class, so just use this README as a basic reference. **You can see more complete instructions in the draft [TUTORIAL.md](./TUTORIAL.md).** Still filling in some placeholder screenshots and clarifying the Mac vs. PC setup...
 
 ### Install conda from command-line (recommended for Macs) or graphical Anaconda distribution:
 
