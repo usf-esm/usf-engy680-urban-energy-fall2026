@@ -1,0 +1,27 @@
+\usepackage{fontspec}
+\usepackage{luaotfload}
+
+% Define a fallback chain for missing glyphs
+\directlua{
+  luaotfload.add_fallback("myfallback", {
+    "Arial Unicode MS:mode=harf;",   % arrows and many symbols
+    "Apple Color Emoji:mode=harf;",  % emoji
+  })
+}
+
+
+% Use Noto Serif as the main font, with fallback for missing characters
+\setmainfont{Noto Serif}[
+  RawFeature={fallback=myfallback},
+  Ligatures=TeX,
+]
+
+\setsansfont{Noto Sans}[
+  RawFeature={fallback=myfallback},
+]
+
+\setmonofont{Noto Sans Mono}[
+  RawFeature={fallback=myfallback},
+  Scale=MatchLowercase,
+]
+

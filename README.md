@@ -41,3 +41,8 @@ Alternatively, you can activate your new environment and launch Jupyter Lab dire
 Follow the navigation buttons in Jupyter Lab to open the desired notebook file (files ending in '.ipynb') or create a new one. It autosaves as you edit or run cells.
 
 When you're done you can shut down Jupyter Lab, and you can check in your code to your personal private course repo using GitHub Desktop.
+
+## Advanced: to regenerate the TUTORIAL.pdf
+Install pandoc and basictex, then run:
+
+`pandoc TUTORIAL.md --pdf-engine=lualatex --include-in-header=emoji-fallback.tex --toc  -o TUTORIAL.pdf`
