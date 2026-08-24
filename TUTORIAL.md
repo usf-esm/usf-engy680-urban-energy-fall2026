@@ -1,7 +1,8 @@
 # ENGY 680 Tutorial: Setting Up Your Python + GitHub Environment
 
-Authored by USF Prof. Zack Subin, Aug 24, 2026
-Refer to latest version and license at [https://github.com/usf-esm/usf-engy680-urban-energy-fall2026](https://github.com/usf-esm/usf-engy680-urban-energy-fall2026).
+**Authored by USF Prof. Zack Subin, Aug 24, 2026.**
+
+**Refer to latest version and license at [https://github.com/usf-esm/usf-engy680-urban-energy-fall2026](https://github.com/usf-esm/usf-engy680-urban-energy-fall2026).**
 
 This tutorial covers the steps needed to get your computer
 ready for Urban Energy and Climate problem sets: installing Python (via conda / Anaconda), installing
