@@ -1,22 +1,23 @@
 # ENGY 680 Tutorial: Setting Up Your Python + GitHub Environment
 
-This tutorial walks you through everything you need to get your laptop
-ready for Urban Energy problem sets: installing Python (via conda), installing
+This tutorial covers the steps needed to get your computer
+ready for Urban Energy and Climate problem sets: installing Python (via conda / Anaconda), installing
 GitHub Desktop, cloning your personal course repo, running a Jupyter notebook,
-and committing/pushing your work back to GitHub.
+and committing + pushing your work back to GitHub.
 
 **Who this is for:** students with no prior command-line, Python, or Git
 experience. Every step works on both **Mac** and **PC (Windows)** — where the
 steps diverge, look for the 🍎 **Mac** / 🪟 **PC** labels.
 
-**We will practice these steps in class together.** Before the first class, just pay attention to Step 0, and if you have time, you may want to get a headstart on installations to save WiFi bandwidth in class.
+**We will practice these steps in class together.** Before the first class, just pay attention to Step 0, though if you have time, you may want to get a headstart on installations to save WiFi bandwidth in class.
 
-Note that these steps are primarily tested on a Mac using command-line rather than Navigator. If you encounter persistent problems on a different platform, reach out to the instructor, TA, or other students to see if there may be a platform-specific issue.
+Note that these steps are primarily tested on a Mac. Behavior on Windows is somewhat dependent on software versions and thus unpredictable. If you encounter persistent problems, reach out to the instructor, TA, or other students to see if there may be a platform-specific challenge or error in these instructions.
 
 ## Attribution
 Claude Sonnet 5 (with reasoning) was used to draft this tutorial from a description of the context, links to the README and homework instructions, and an outline of the 7 major steps: see [conversation](https://assistant.kagi.com/share/5464ab93-65b3-454a-bc61-db662c6a7d7f) via Kagi.
 
 ## Table of Contents
+0. [Before you start](#0-before-you-start)
 1. [Install conda (Miniconda)](#1-install-conda-miniconda)
 2. [Install GitHub Desktop and sign in](#2-install-github-desktop-and-sign-in)
 3. [Clone your private course repo](#3-clone-your-private-course-repo)
@@ -24,8 +25,10 @@ Claude Sonnet 5 (with reasoning) was used to draft this tutorial from a descript
 5. [Launch Jupyter Lab](#5-launch-jupyter-lab)
 6. [Run the demo/homework notebook](#6-run-the-demohomework-notebook)
 7. [Commit and push your changes](#7-commit-and-push-your-changes)
-8. [Troubleshooting](#8-troubleshooting)
+8. _[Troubleshooting](#8-troubleshooting)_
+<!--
 9. [Screenshot checklist](#9-screenshot-checklist-for-instructors)
+-->
 
 ---
 
@@ -35,38 +38,46 @@ Claude Sonnet 5 (with reasoning) was used to draft this tutorial from a descript
 - You've emailed the instructor your GitHub username (or accepted the
       emailed repo invite), so your private repo `[YOUR_USERNAME]/engy680`
       exists and you have access.
-- You have ~2 GB of free disk space and a decent internet connection
-      (the conda environment download can be several hundred MB).
+- You have ~2 GB of free disk space (if installing Miniconda) or ~10 GB (if installing the full Anaconda with graphical Navigator) and a decent internet connection.
 
 ---
 
-## 1. Install conda (Miniconda)
+## 1. Install conda (Miniconda) or Anaconda
 
 **Conda** is a tool for managing isolated Python installations ("environments")
 so that every student in the class runs the *same* package versions,
-regardless of what's already on your laptop. We use **Miniconda** (a minimal
-installer) rather than the full Anaconda Distribution, since we'll build our
-own environment from `environment.yml` anyway — but full Anaconda works fine
-too if you already have it.
+regardless of what's already on your computer. **Miniconda** (a minimal
+installer) is preferred to the full Anaconda Distribution to minimize disk space and the chance of conflicting environment dependencies (libraries explicitly or implicitly required by our notebooks invoked using "import" commands), since we'll build our
+own environment from `environment.yml` anyway. **Miniconda is designed to run entirely from the command line (Terminal).**
 
-### 🍎 Mac — Option A: Command line (recommended)
+The full **Anaconda** distribution works fine too if you already have it, and it is recommended on Windows.
 
-Open the **Terminal** app (Spotlight search → "Terminal"), then run:
+### 🍎 Mac — Option A: Miniconda installation (recommended)
+
+You can install via Terminal or graphically.
+
+#### Option A1. Install Miniconda from Terminal using brew:
+Open the **Terminal** app (Spotlight search or Applications window → "Terminal"), 
+![Step 1: open terminal](screenshots/OpenTerminal.jpg)
+
+then run:
 
 ```bash
 brew install --cask miniconda
 ```
+![Step 1: install conda](screenshots/BrewInstallConda.jpg)
 
-(If you don't have Homebrew yet, install it first from
-[brew.sh](https://brew.sh), or just use Option B below.)
+If you don't have Homebrew yet, install it first from
+[brew.sh](https://brew.sh), or install graphically.
 
-### 🍎 Mac / 🪟 PC — Option B: Graphical installer
+#### Option A2. Graphical installation for Miniconda:
 
-1. Go to [anaconda.com/download](https://www.anaconda.com/download) and
-   download the Miniconda installer for your OS.
-2. Run the installer and follow the prompts (accept defaults unless you have
-   a reason not to; on the "Install for" screen choose **Just Me**, not
-   **All Users**).
+Go to [anaconda.com/download](https://www.anaconda.com/download) and download the **Miniconda** installer. Run the installer and follow the prompts (accept defaults unless you have a reason not to; on the "Install for" screen choose **Just Me**, not **All Users**).
+![Step 1: Download Miniconda](screenshots/DownloadMiniconda.jpg)
+
+### 🍎 Mac / 🪟 PC — Option B: Graphical Anaconda installer with Navigator application
+
+Go to [anaconda.com/download](https://www.anaconda.com/download) and download the **Anaconda** installer. Run the installer and follow the prompts (accept defaults unless you have a reason not to; on the "Install for" screen choose **Just Me**, not **All Users**).
 
 <!--
 ![Step 1: Miniconda installer welcome/license screen](screenshots/01a_miniconda_installer_welcome.jpg)
@@ -79,7 +90,8 @@ brew install --cask miniconda
 
 On Windows, the installer adds an **Anaconda Prompt** to your Start Menu —
 use this instead of the regular Command Prompt / PowerShell for all
-`conda`/`jupyter` commands below (unless you checked the box during install
+`conda` or `jupyter` commands below or just use Navigator in this case
+(unless you checked the box during install
 to add conda to your system PATH).
 
 ### Verify the install
@@ -93,7 +105,7 @@ conda --version
 You should see something like `conda 24.x.x`. If you get "command not found,"
 see [Troubleshooting](#8-troubleshooting).
 
-![Step 1: Terminal showing successful `conda --version` output](screenshots/01d_conda_version_terminal.jpg)
+![Step 1: Terminal showing successful `conda --version` output](screenshots/SuccessfulInstall.jpg)
 
 ---
 
@@ -102,7 +114,7 @@ see [Troubleshooting](#8-troubleshooting).
 We'll use **GitHub Desktop** — a graphical app — instead of raw git commands,
 so you never have to memorize `git` syntax, and to simplify logging into github (you [can no longer](https://github.blog/security/application-security/token-authentication-requirements-for-git-operations/) log in to access private repos from a terminal simply with a username and password; you have to use an ssh-key or OAuth procedure which GitHub Desktop takes care of for you).
 
-1. Download it from [desktop.github.com](https://desktop.github.com).
+1. Download it from [desktop.github.com](https://desktop.github.com). (You can alternatively install this via brew using the "github" cask.)
 2. Install it:
    - 🍎 **Mac**: open the `.zip`, drag **GitHub Desktop** into Applications.
    - 🪟 **PC**: run the installer `.exe`; it installs and launches
@@ -113,30 +125,31 @@ so you never have to memorize `git` syntax, and to simplify logging into github 
 4. If prompted, confirm your name/email for git commits (your GitHub account
    name/email is fine).
 
+<!--
 ![Step 2: GitHub Desktop sign-in screen](screenshots/02a_github_desktop_signin.jpg)
 ![Step 2: Browser authorization prompt for GitHub Desktop](screenshots/02b_github_desktop_authorize.jpg)
 ![Step 2: GitHub Desktop configure git name/email screen](screenshots/02c_github_desktop_configure_git.jpg)
 
 *(Reference if your UI looks different: GitHub's own docs on installing and
 signing into GitHub Desktop.)*
-
+-->
 ---
 
 ## 3. Clone your private course repo
 
-Each student has a private repo named `[YOUR_USERNAME]/engy680`
-(a copy of the shared course repo). **Do not** try to do homework in the
-shared/instructor repo — only your private copy.
+Each student has a private repo named `[INSTRUCTOR_USERNAME]/engy680-[YOUR_USERNAME]`
+(a copy of the shared course repo). 🛑 **DO NOT** try to do homework in the
+shared/instructor repo — only your private copy. (The GitHub permissions should be configured to prevent this, but just in case they are not, this will keep your homework private.)
 
 1. In GitHub Desktop, go to **File → Clone Repository...**
-2. Click the **GitHub.com** tab and find `[YOUR_USERNAME]/engy680` in the
+2. Click the **GitHub.com** tab and find `[INSTRUCTOR_USERNAME]/engy680-[YOUR_USERNAME]` in the
    list (or paste the URL under the **URL** tab if it doesn't show up).
 3. Choose a **Local Path** — somewhere easy to find, e.g. `Documents/engy680`.
 4. Click **Clone** and wait for it to finish.
 
-![Step 3: File menu with Clone Repository highlighted](screenshots/03a_clone_menu.jpg)
-![Step 3: Clone Repository dialog, GitHub.com tab, repo selected](screenshots/03b_clone_dialog.jpg)
-![Step 3: Clone progress / completed clone view](screenshots/03c_clone_complete.jpg)
+![Step 3: File menu with Clone Repository highlighted](screenshots/FileMenuClone.jpg)
+![Step 3: Clone Repository dialog, GitHub.com tab, repo selected](screenshots/CloneMenu.jpg)
+![Step 3: Clone progress / completed clone view](screenshots/SuccessfulClone.jpg)
 
 *If your repo isn't listed:* your invite may not be accepted yet — check your
 email (including spam) for a GitHub invite, or confirm with the instructor
@@ -159,6 +172,7 @@ the environment:
 cd path/to/engy680
 conda env create -f environment.yml -n engy680
 ```
+![Step 4: installing env](screenshots/InstallingEnv.jpg)
 
 This can take a few minutes ("solving environment..."). When it finishes,
 activate it:
@@ -169,8 +183,16 @@ conda activate engy680
 
 Your terminal prompt should now show `(engy680)` at the start of the line.
 
-![Step 4: Terminal running `conda env create`, mid-solve](screenshots/04a_conda_env_create.jpg)
-![Step 4: Terminal showing `(engy680)` prompt after activation](screenshots/04b_conda_activate.jpg)
+Verify:
+
+```bash
+conda env list
+```
+
+You should see `engy680` in the list with an asterisk `*` next to it if
+active.
+
+![Step 4: successful env](screenshots/SuccessfulEnv.jpg)
 
 ### Option B: Anaconda Navigator (graphical, no terminal)
 
@@ -181,20 +203,14 @@ Your terminal prompt should now show `(engy680)` at the start of the line.
    under **Specification File**, and click **Import**.
 5. Wait for the solver — this can take several minutes.
 
-![Step 4: Navigator Environments tab with Import button highlighted](screenshots/04c_navigator_import_button.jpg)
-![Step 4: Navigator Import dialog with name and .yml file selected](screenshots/04d_navigator_import_dialog.jpg)
+![Step 4: Navigator Environments tab with Import button highlighted](screenshots/NavImport.jpg)
+![Step 4: Navigator Import dialog with name and .yml file selected](screenshots/NavImportDialog.jpg)
 
+<!--
 *(Reference: Anaconda's own Navigator docs on importing environments, if your
 version's menu layout differs.)*
+-->
 
-### Verify
-
-```bash
-conda env list
-```
-
-You should see `engy680` in the list with an asterisk `*` next to it if
-active.
 
 ---
 
@@ -213,8 +229,8 @@ A browser tab should open automatically showing the Jupyter Lab file
 browser. (If not, copy the `http://localhost:8888/...` URL printed in the
 terminal into your browser.)
 
-![Step 5: Terminal launching jupyter-lab](screenshots/05a_jupyter_lab_launch_terminal.jpg)
-![Step 5: Jupyter Lab landing page in browser](screenshots/05b_jupyter_lab_landing_page.jpg)
+![Step 5: Terminal launching jupyter-lab](screenshots/LaunchJupyter.jpg)
+![Step 5: Jupyter Lab landing page in browser](screenshots/JupyterLanding.jpg)
 
 ### Anaconda Navigator
 
@@ -222,8 +238,17 @@ terminal into your browser.)
 2. Make sure the environment dropdown at top reads **engy680**.
 3. Click **Launch** under the **JupyterLab** tile.
 
-![Step 5: Navigator Home tab, environment dropdown set to engy680](screenshots/05c_navigator_env_dropdown.jpg)
-![Step 5: Navigator JupyterLab launch tile](screenshots/05d_navigator_launch_jupyterlab.jpg)
+   If the JupyterLab tile shows an **Install** button instead of **Launch**
+   after you select the `engy680` environment, that usually means
+   `jupyterlab` didn't make it into the environment during Step 4 (e.g., the
+   import was interrupted). Click **Install** on the tile and wait for it to
+   finish, or re-run the command-line install: `conda activate engy680 && conda install jupyterlab`.
+
+   🤔 This step may have problems on some configurations. Since we are using only very standard packages with common usages, you may be able to successfully run the homework using the Base environment that comes with the Navigator package. This may be less somewhat likely to work in subsequent homeworks when we make a map visualization using geopandas.
+
+
+![Step 5: Navigator Home tab, environment dropdown set to engy680](screenshots/NavSelectEnv.jpg)
+![Step 5: Navigator JupyterLab launch tile](screenshots/NavJupyter.jpg)
 
 ---
 
@@ -245,9 +270,9 @@ terminal into your browser.)
    - Close the browser tab and go back to the terminal, press `Ctrl+C` twice
      to stop the server, or click **Stop** in Navigator.
 
-![Step 6: Notebook open, Run All Cells highlighted in menu](screenshots/06a_notebook_run_all.jpg)
-![Step 6: New cell added at bottom with homework code](screenshots/06b_notebook_new_cell.jpg)
-![Step 6: File → Shut Down menu option](screenshots/06c_notebook_shutdown.jpg)
+![Step 6: Notebook open, Run All Cells highlighted in menu](screenshots/JupyterRunAll.jpg)
+![Step 6: New cell added at bottom with homework code](screenshots/JupyterRunCell.jpg)
+![Step 6: File → Shut Down menu option](screenshots/JupyterShutDown.jpg)
 
 ---
 
@@ -259,6 +284,9 @@ Now save your work back to GitHub using GitHub Desktop.
    dropdown shows `[YOUR_USERNAME]/engy680` — **not** the shared class repo.
 2. Click the **Changes** tab (left side) to see every file you've modified.
    Click a file to see its diff (added/removed lines) on the right.
+   
+   🤓 In contrast to conventional code, (e.g., .py scripts or modules), this diff comparison is not as helpful for Jupyter notebooks which have been saved in a run state because it tracks
+   verbose runtime changes to package versions, binary graphic outputs, etc. Ask about ways to clean this to allow more clean tracking when using notebooks.
 3. **Check carefully**: only your notebook (`.ipynb`) and any code files
    should be checked/staged, along with any appendix chatbot session markdown files or other small addenda. **Uncheck** (or right-click → **Ignore file**,
    which adds it to `.gitignore`) any large data files, output CSVs, or
@@ -270,14 +298,15 @@ Now save your work back to GitHub using GitHub Desktop.
 7. (Optional but reassuring) Open your repo on github.com in a browser and
    confirm your latest commit appears in the history.
 
-![Step 7: Repository dropdown showing correct repo selected](screenshots/07a_repo_dropdown.jpg)
-![Step 7: Changes tab with file list and diff view](screenshots/07b_changes_diff.jpg)
-![Step 7: Right-click context menu showing "Ignore file"](screenshots/07c_ignore_file_menu.jpg)
-![Step 7: Commit message box and Commit to main button](screenshots/07d_commit_box.jpg)
-![Step 7: Push origin button after committing](screenshots/07e_push_origin.jpg)
-![Step 7: GitHub.com commit history confirming the push](screenshots/07f_github_commit_history.jpg)
+![Step 7: Repository dropdown showing correct repo selected](screenshots/GHDRepo.jpg)
+![Step 7: Changes tab with file list and diff view](screenshots/GHDDiff.jpg)
+![Step 7: Right-click context menu showing "Ignore file"](screenshots/GHDIgnore.jpg)
+![Step 7: Commit message box and Commit to main button](screenshots/GHDCommit.jpg)
+![Step 7: Push origin button after committing](screenshots/GHDPush.jpg)
+![Step 7: GitHub.com commit history confirming the push](screenshots/GithubPostCommit.jpg)
+![Step 7: GitHub.com commit diff comparison](screenshots/GitHubCommitWindow.jpg)
 
-> **Reminder:** You don't need to save copies like `HW1_v2.ipynb` or
+> 💡 **Reminder:** You don't need to save copies like `HW1_v2.ipynb` or
 > `HW1_final.ipynb` — that's what git/version history is for. Just keep
 > committing to the same file as you make progress.
 
