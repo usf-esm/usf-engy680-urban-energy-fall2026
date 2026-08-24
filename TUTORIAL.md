@@ -40,7 +40,7 @@ Claude Sonnet 5 (with reasoning) was used to draft this tutorial from a descript
 
 - You have a [github.com](https://github.com) account.
 - You've emailed the instructor your GitHub username (or accepted the
-      emailed repo invite), so your private repo `[YOUR_USERNAME]/engy680`
+      emailed repo invite), so your private repo `usf-esm/engy680-[YOUR_USERNAME]`
       exists and you have access.
 - You have ~2 GB of free disk space (if installing Miniconda) or ~10 GB (if installing the full Anaconda with graphical Navigator) and a decent internet connection.
 
