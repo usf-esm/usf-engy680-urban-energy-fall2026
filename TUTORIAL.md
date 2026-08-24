@@ -1,6 +1,7 @@
 # ENGY 680 Tutorial: Setting Up Your Python + GitHub Environment
 
-Drafted by USF Prof. Zack Subin, Aug 23, 2026
+Authored by USF Prof. Zack Subin, Aug 24, 2026
+Refer to latest version and license at [https://github.com/usf-esm/usf-engy680-urban-energy-fall2026](https://github.com/usf-esm/usf-engy680-urban-energy-fall2026).
 
 This tutorial covers the steps needed to get your computer
 ready for Urban Energy and Climate problem sets: installing Python (via conda / Anaconda), installing
@@ -140,12 +141,12 @@ signing into GitHub Desktop.)*
 
 ## 3. Clone your private course repo
 
-Each student has a private repo named `[INSTRUCTOR_USERNAME]/engy680-[YOUR_USERNAME]`
+Each student has a private repo named `usf-esm/engy680-[YOUR_USERNAME]`
 (a copy of the shared course repo). 🛑 **DO NOT** try to do homework in the
 shared/instructor repo — only your private copy. (The GitHub permissions should be configured to prevent this, but just in case they are not, this will keep your homework private.)
 
 1. In GitHub Desktop, go to **File → Clone Repository...**
-2. Click the **GitHub.com** tab and find `[INSTRUCTOR_USERNAME]/engy680-[YOUR_USERNAME]` in the
+2. Click the **GitHub.com** tab and find `usf-esm/engy680-[YOUR_USERNAME]` in the
    list (or paste the URL under the **URL** tab if it doesn't show up).
 3. Choose a **Local Path** — somewhere easy to find, e.g. `Documents/engy680`.
 4. Click **Clone** and wait for it to finish.
