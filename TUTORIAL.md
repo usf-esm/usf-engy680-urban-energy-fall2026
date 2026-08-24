@@ -1,5 +1,7 @@
 # ENGY 680 Tutorial: Setting Up Your Python + GitHub Environment
 
+Drafted by USF Prof. Zack Subin, Aug 23, 2026
+
 This tutorial covers the steps needed to get your computer
 ready for Urban Energy and Climate problem sets: installing Python (via conda / Anaconda), installing
 GitHub Desktop, cloning your personal course repo, running a Jupyter notebook,
@@ -26,6 +28,7 @@ Claude Sonnet 5 (with reasoning) was used to draft this tutorial from a descript
 6. [Run the demo/homework notebook](#6-run-the-demohomework-notebook)
 7. [Commit and push your changes](#7-commit-and-push-your-changes)
 8. _[Troubleshooting](#8-troubleshooting)_
+
 <!--
 9. [Screenshot checklist](#9-screenshot-checklist-for-instructors)
 -->
