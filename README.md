@@ -1,5 +1,5 @@
 # usf-engy680-urban-energy-fall2026
-Shared code for Urban Energy and Climate course materials.
+Shared code for Urban Energy and Climate course materials. Developed by Assistant Prof. [Zack Subin](https://www.usfca.edu/faculty/zack-subin).
 
 ## Setup
 
