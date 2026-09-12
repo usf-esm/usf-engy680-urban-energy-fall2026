@@ -11,7 +11,8 @@ def retrieve_acs_var(
     acs_year: int = 2024,
     geo: str = 'county',
     base_url: str = 'https://api.census.gov/data/YYYY/acs/acs5', # should have a dummy YYYY to be replaced
-    out_geo_name: str = 'GEOID'
+    out_geo_name: str = 'GEOID',
+    trim_geo: int = 9 # number of chars to remove from the beginning of the geos.
 ):
     """
     Retrieve an ACS variable using the census API.
@@ -22,11 +23,11 @@ def retrieve_acs_var(
     state_fips : FIPS code str for the state to retrieve, default = California '06'
     acs_year : 5-year ACS, default = 2024
     geo : geography level to retrieve, default = 'county'
-    base_url : 
+    Other optional args: base_url, out_geo_name, and trim_geo.
 
     Returns
     -------
-    The 
+    Dataframe with variables and metadata as columns, index = GEOID.
 
     Example usage
     -------------
@@ -64,7 +65,14 @@ def retrieve_acs_var(
     df = pd.DataFrame(data[1:], columns=data[0])
 
     df = df.rename(variables, axis=1) # Rename to user-friendly names
+    df['GEO_ID'] = df['GEO_ID'].map(lambda x: x[trim_geo:]) # Trim first 9 chars
     df = df.rename({'GEO_ID': out_geo_name}, axis=1) # Rename to user-friendly names
+
+    # Default to outputting numeric values
+    df[list(variables.values())] = df[list(variables.values())].apply(pd.to_numeric)
+    # This syntax took a lot of trial and error!
+    # For the list of columns matching values in the variable dictionary, apply the function pd.to_numeric.
+    
     df = df.set_index(out_geo_name)
 
     print(df.head()) #head returns just the first 5 rows
