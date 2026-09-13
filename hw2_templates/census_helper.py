@@ -55,15 +55,29 @@ def retrieve_acs_var(
     
     # if it worked, keep the data; if not, print the Census Bureau's explanation instead of a scary traceback
     if response.status_code == 200:
-        data = response.json()
-        print(data[:3])                              # peek at the first three rows of what came back
+        try:
+            data = response.json()
+            print(data[:3])                              # peek at the first three rows of what came back
+        except requests.exceptions.JSONDecodeError:
+            print("No valid data received from census API. Aborting.")
+            return None
     else:
-        print("The API said no. Check API_KEY and the SETTINGS cell. The message it sent back:")
+        print("The API said no. Check API_KEY and the variable names. The message it sent back:")
         print(response.text[:300])
+        return None
 
     # The API returns a list of lists; the first row is the column headers
+    
     df = pd.DataFrame(data[1:], columns=data[0])
 
+    # Print the rename for reference:
+    for v in variables.keys():
+        if v in df.columns:
+            print(f"Retrieved ACS variable {v}: renaming as {variables[v]}.")
+        else:
+            print(f"Failed to retrieve variable {v}. Aborting.")
+            return None
+    
     df = df.rename(variables, axis=1) # Rename to user-friendly names
     df['GEO_ID'] = df['GEO_ID'].map(lambda x: x[trim_geo:]) # Trim first 9 chars
     df = df.rename({'GEO_ID': out_geo_name}, axis=1) # Rename to user-friendly names
