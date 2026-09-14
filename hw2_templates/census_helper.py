@@ -22,7 +22,7 @@ def retrieve_acs_var(
     variables : dictionary of variable names with full column suffix (i.e. '_001E')
     state_fips : FIPS code str for the state to retrieve, default = California '06'
     acs_year : 5-year ACS, default = 2024
-    geo : geography level to retrieve, default = 'county'
+    geo : geography level to retrieve, default = 'county'. state is not supported.
     Other optional args: base_url, out_geo_name, and trim_geo.
 
     Returns
@@ -39,10 +39,14 @@ def retrieve_acs_var(
     
     # params is a dictionary: a set of labeled values, like filling in a form
     params = {
-        "for": geo + ":*",                        # every county...
-        "in": "state:" + state_fips,              # ...in our state
+        "for": geo + ":*",                        # every geo...
+        "in": "state:" + state_fips,	          # ...in our state
         "key": CENSUS_API_KEY,
     }
+
+    # for tracts and block groups we may need to clarify all counties
+    if geo == 'block group':
+        params['in'] = "state:" + state_fips + " county:*"
     
     # We'll define "get" by appending our variable list
     params['get'] = 'NAME,GEO_ID' # geo name and full FIPS
@@ -90,11 +94,17 @@ def retrieve_acs_var(
     df = df.set_index(out_geo_name)
 
     print(df.head()) #head returns just the first 5 rows
+    print(f"Retrieved {len(df)} rows in total.")
     
     return df
 
 
 if __name__ == '__main__': # if this is running standalone for testing
     df = retrieve_acs_var({'B25040_001E': 'Total Occupied Homes', 'B25040_004E': 'Homes with Electric Heating'})
+    print(df.head())
+    print(df.columns)
+
+    df = retrieve_acs_var({'B25040_001E': 'Total Occupied Homes', 'B25040_004E': 'Homes with Electric Heating'},
+                         geo="block group")
     print(df.head())
     print(df.columns)
