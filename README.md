@@ -1,6 +1,16 @@
 # usf-engy680-urban-energy-fall2026
 Shared code for Urban Energy and Climate course materials. Developed by Assistant Prof. [Zack Subin](https://www.usfca.edu/faculty/zack-subin).
 
+## Contents:
+- `TUTORIAL.md`: Instructions to set up environment, use Jupyter, and use Github Desktop
+- `environment.yml`: Platform-independent environment file
+- `hw1_and_demo/`:
+    - `simple_stock_rollover_HW1.ipynb`: US vehicle stock rollover and cumulative emissions exercise
+- `hw2_templates/`:
+    - `vmt_explore.ipynb`: Geospatial analysis of CA VMT data focused on SF (Read first)
+    - `wildfire_risk_explore.ipynb`: Geospatial analysis of wildfire risk data focused on SF (Read second)
+    - `census_helper.py`: helper module used in wildfire_risk_explore to import ACS data
+
 ## Setup
 
 We will work through these steps together in class, so just use this README as a basic reference. **You can see more complete instructions in the draft [TUTORIAL.md](./TUTORIAL.md).** Still filling in some placeholder screenshots and clarifying the Mac vs. PC setup...
