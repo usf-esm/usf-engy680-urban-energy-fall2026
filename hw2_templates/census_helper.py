@@ -87,7 +87,7 @@ def retrieve_acs_var(
     df = df.rename({'GEO_ID': out_geo_name}, axis=1) # Rename to user-friendly names
 
     # Default to outputting numeric values
-    df[list(variables.values())] = df[list(variables.values())].apply(pd.to_numeric)
+    df[list(variables.values())] = df[list(variables.values())].apply(lambda x: pd.to_numeric(x, errors='coerce'))
     # This syntax took a lot of trial and error!
     # For the list of columns matching values in the variable dictionary, apply the function pd.to_numeric.
     
@@ -100,11 +100,19 @@ def retrieve_acs_var(
 
 
 if __name__ == '__main__': # if this is running standalone for testing
+    print('County:\n\n')
     df = retrieve_acs_var({'B25040_001E': 'Total Occupied Homes', 'B25040_004E': 'Homes with Electric Heating'})
     print(df.head())
     print(df.columns)
 
+    print('Block Group:\n\n')
     df = retrieve_acs_var({'B25040_001E': 'Total Occupied Homes', 'B25040_004E': 'Homes with Electric Heating'},
                          geo="block group")
+    print(df.head())
+    print(df.columns)
+
+    print('Tract:\n\n')
+    df = retrieve_acs_var({'B25040_001E': 'Total Occupied Homes', 'B25040_004E': 'Homes with Electric Heating'},
+                         geo="tract")
     print(df.head())
     print(df.columns)
