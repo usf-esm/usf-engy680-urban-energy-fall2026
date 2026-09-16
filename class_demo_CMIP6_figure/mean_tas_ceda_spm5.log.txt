@@ -1,0 +1,15 @@
+tas: dims=('panel', 'lat', 'lon') shape=(1, 180, 360) units=degC
+cells in CONUS: 819
+CONUS area-weighted mean ΔT = 2.532
+Overall unweighted distribution using 'describe()':
+                0
+count  819.000000
+mean     2.546489
+std      0.276706
+min      1.730225
+25%      2.366638
+50%      2.598053
+75%      2.745468
+max      3.163055
+Inferred land area is 7.794359162599273 million km^2.
+CONUS area-weighted mean ΔT in F = 4.558
