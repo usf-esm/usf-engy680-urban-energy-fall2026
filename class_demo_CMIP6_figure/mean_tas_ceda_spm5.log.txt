@@ -1,7 +1,7 @@
 tas: dims=('panel', 'lat', 'lon') shape=(1, 180, 360) units=degC
 cells in CONUS: 819
 CONUS area-weighted mean ΔT = 2.532
-Overall distribution using 'describe()':
+Overall unweighted distribution using 'describe()':
                 0
 count  819.000000
 mean     2.546489

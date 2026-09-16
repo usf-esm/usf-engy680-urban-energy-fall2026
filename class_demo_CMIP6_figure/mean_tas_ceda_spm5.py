@@ -63,7 +63,7 @@ mean = float(np.sum(w * data.filled(0.0)) / np.sum(w))
 print(f"cells in CONUS: {in_conus.sum()}")
 print(f"CONUS area-weighted mean ΔT = {mean:.3f}")
 
-print("Overall distribution using 'describe()':")
+print("Overall unweighted distribution using 'describe()':")
 
 valid = ~np.ma.getmaskarray(data) * in_conus * data.filled(0)
 valid = pd.DataFrame(valid).stack()
