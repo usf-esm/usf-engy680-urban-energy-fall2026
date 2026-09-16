@@ -2,14 +2,15 @@
 Shared code for Urban Energy and Climate course materials. Developed by Assistant Prof. [Zack Subin](https://www.usfca.edu/faculty/zack-subin).
 
 ## Contents:
-- `TUTORIAL.md`: Instructions to set up environment, use Jupyter, and use Github Desktop
-- `environment.yml`: Platform-independent environment file
-- `hw1_and_demo/`:
-    - `simple_stock_rollover_HW1.ipynb`: US vehicle stock rollover and cumulative emissions exercise
-- `hw2_templates/`:
-    - `vmt_explore.ipynb`: Geospatial analysis of CA VMT data focused on SF (Read first)
-    - `wildfire_risk_explore.ipynb`: Geospatial analysis of wildfire risk data focused on SF (Read second)
-    - `census_helper.py`: helper module used in wildfire_risk_explore to import ACS data
+- [TUTORIAL.md](./TUTORIAL.md): Instructions to set up environment, use Jupyter, and use Github Desktop
+- [environment.yml](./environment.yml): Platform-independent environment file
+- [hw1_and_demo/](./hw1_and_demo/):
+    - [simple_stock_rollover_HW1.ipynb](./hw1_and_demo/simple_stock_rollover_HW1.ipynb): US vehicle stock rollover and cumulative emissions exercise
+- [hw2_templates/](./hw2_templates/):
+    - [vmt_explore.ipynb](./hw2_templates/vmt_explore.ipynb): Geospatial analysis of CA VMT data focused on SF (Read first)
+    - [wildfire_risk_explore.ipynb](./hw2_templates/wildfire_risk_explore.ipynb): Geospatial analysis of wildfire risk data focused on SF (Read second)
+    - [census_helper.py](./hw2_templates/census_helper.py): Helper module used in wildfire_risk_explore to import ACS data
+- 🤓 [class_demo_CMIP6_figure/](./class_demo_CMIP6_figure/): Script to average global warming over the continental US
 
 ## Setup
 
